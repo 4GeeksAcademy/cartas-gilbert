@@ -5,8 +5,8 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 let palos = [
-  { nombre: "picas", icono: "bi-suit-spade-fill", color: "black },
-  { nombre: "trboles", icono: "bi-suit-club-fill", color: "black" },
+  { nombre: "picas", icono: "bi-suit-spade-fill", color: "black" },
+  { nombre: "treboles", icono: "bi-suit-club-fill", color: "black" },
   { nombre: "corazon", icono: "bi-suit-heart-fill", color: "red" },
   { nombre: "diamantes", icono: "bi-suit-diamond-fill", color: "red" }
 ];
@@ -17,15 +17,24 @@ function nuevaCarta() {
   let palo = palos[Math.floor(Math.random() * palos.length)];
   let numero = numeros[Math.floor(Math.random() * numeros.length)];
 
-  document.querySelector(".top").textContent = numero;
-  document.querySelector(".bottom").textContent = numero;
+  // Mostrar número en el centro
+  const top = document.querySelector(".top");
+  const bottom = document.querySelector(".bottom");
+  const center = document.querySelector(".center");
 
-  let center = document.querySelector(".center");
+  // Poner el número en el centro (texto)
+  center.textContent = numero;
+  // Asegurarnos de que el centro no tenga clases de icono
+  center.className = "center";
+  center.style.color = "inherit";
 
-  // Reiniciar clases y asignar las clases de Bootstrap Icons
-  center.className = "center"; // limpiar clases previas
-  center.classList.add("bi", palo.icono);
-  center.style.color = palo.color;
+  // Limpiar y asignar iconos en top y bottom
+  top.className = "top"; // limpiar clases previas
+  bottom.className = "bottom";
+  top.classList.add("bi", palo.icono);
+  bottom.classList.add("bi", palo.icono);
+  top.style.color = palo.color;
+  bottom.style.color = palo.color;
 }
 
 document.getElementById("btn").addEventListener("click", nuevaCarta);
