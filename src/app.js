@@ -17,19 +17,16 @@ function nuevaCarta() {
   let palo = palos[Math.floor(Math.random() * palos.length)];
   let numero = numeros[Math.floor(Math.random() * numeros.length)];
 
-  // Mostrar número en el centro
   const top = document.querySelector(".top");
   const bottom = document.querySelector(".bottom");
   const center = document.querySelector(".center");
 
-  // Poner el número en el centro (texto)
   center.textContent = numero;
-  // Asegurarnos de que el centro no tenga clases de icono
   center.className = "center";
   center.style.color = "inherit";
 
-  // Limpiar y asignar iconos en top y bottom
-  top.className = "top"; // limpiar clases previas
+
+  top.className = "top"; 
   bottom.className = "bottom";
   top.classList.add("bi", palo.icono);
   bottom.classList.add("bi", palo.icono);
